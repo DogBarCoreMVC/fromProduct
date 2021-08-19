@@ -36,7 +36,7 @@ namespace fromProduct.Controllers
                 wareHouseDB.Add(products);
                 await wareHouseDB.SaveChangesAsync();
                 return RedirectToAction(nameof(InShow));
-                ViewData["CategoryId"] = new SelectList(wareHouseDB.ProductsTbls);
+                
             }
             return View();
         }
