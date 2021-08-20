@@ -33,11 +33,12 @@ namespace fromProduct.Controllers
         [ValidateAntiForgeryToken]//ปกกันการถูกโจตีจากเว็บอื่น
         public async Task<IActionResult> InShow(ProductsTbl products)//ทำการเขียบทับ method หรือ Override Method
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                wareHouseDB.Add(products);//save data in method Add โดยข้อมูลมาจาก products in Parameter 
+                wareHouseDB.Add(products);//save data in method Add โดยข้อมูลมาจาก products in Parameter
                 await wareHouseDB.SaveChangesAsync();//บันทึกลง Database ด้วย Method SaveChangesAsync();
                 return RedirectToAction(nameof(InShow));
+
             }
             return View();
         }
