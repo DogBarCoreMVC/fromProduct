@@ -23,6 +23,7 @@ namespace fromProduct.Controllers
         
         public IActionResult InShow()
         {
+            ViewData["ProductId"] = new SelectList(wareHouseDB.ProductsTbls, "ProductId", "ProductName");
             ViewData["CategoryId"] = new SelectList(wareHouseDB.CategoriesTbls, "CategoryId", "CategoryName");
             return View();
         }
@@ -36,7 +37,9 @@ namespace fromProduct.Controllers
                 wareHouseDB.Add(products);
                 await wareHouseDB.SaveChangesAsync();
                 return RedirectToAction(nameof(InShow));
-                
+                ViewData["ProductId"] = new SelectList(wareHouseDB.ProductsTbls, "ProductId", "ProductName",products.CategoryId);
+                ViewData["CategoryId"] = new SelectList(wareHouseDB.CategoriesTbls, "CategoryId", "CategoryName",products.ProductId);
+                return View(products);
             }
             return View();
         }
