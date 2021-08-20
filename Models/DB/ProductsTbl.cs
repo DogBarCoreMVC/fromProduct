@@ -19,7 +19,9 @@ namespace fromProduct.Models.DB
         [Display(Name = "ราคาอาหาร")]
         [Required(ErrorMessage = "กรุณาใส่ราคา")]
         public decimal? ProductPrice { get; set; }
-       
+
+        [Display(Name = "ประเภทอาหาร (อาหารจานเดียวคืออาหารตามสั่งทั้งหมด นอกจากนั้นเป็นกับข้าว)")]
+        [Required(ErrorMessage = "เลือกประเภทอาหาร")]
         public int? CategoryId { get; set; }
         
         public virtual CategoriesTbl Category { get; set; }
